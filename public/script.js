@@ -1,4 +1,4 @@
-var port = "syed-tariq-ahmed-production.up.railway.app";
+var port = "https://syed-tariq-ahmed-production.up.railway.app";
 
 function sinup() {
   var obj = {
