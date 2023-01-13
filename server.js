@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
-const port = 3000 || process.env.PORT ;
+const port =  process.env.PORT ;
 const bycrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
