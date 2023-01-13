@@ -1,5 +1,5 @@
 // var port = "https://sir-web.herokuapp.com";
-var port = "http://localhost:3000"
+var port = "syed-tariq-ahmed-production.up.railway.app"
 
 function admit() {
   console.log("hello");

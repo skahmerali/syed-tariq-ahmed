@@ -1,5 +1,5 @@
 function sendDescription() {
-  const url = "http://localhost:3000";
+  const url = "syed-tariq-ahmed-production.up.railway.app";
   const Http = new XMLHttpRequest();
   Http.open("POST", url + "/desc");
   Http.setRequestHeader("Content-Type", "application/json");

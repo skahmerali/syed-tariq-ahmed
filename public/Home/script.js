@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "syed-tariq-ahmed-production.up.railway.app";
 
 function getData() {
   var showdata = document.getElementById("showdata");
