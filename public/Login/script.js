@@ -6,6 +6,7 @@ function login() {
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
   };
+  console.log(obj)
   var Http = new XMLHttpRequest();
   Http.open("POST", port + "/logIn");
   Http.setRequestHeader("Content-Type", "application/json");
@@ -19,7 +20,13 @@ function login() {
         setInterval(function () {
           window.location.href = "../Home/home.html";
         }, 3000);
-        console.log(jsonRes);
+        console.log(jsonRes.user_data_Secret.id);
+        localStorage.setItem("id" , jsonRes.user_data_Secret.id)
+        localStorage.setItem("name" , jsonRes.user_data_Secret.username)
+        localStorage.setItem("email" , jsonRes.user_data_Secret.email)
+        localStorage.setItem("`password" , jsonRes.user_data_Secret.password)
+        localStorage.setItem("phone" , jsonRes.user_data_Secret.phone)
+        localStorage.setItem("confPassword" , jsonRes.user_data_Secret.confPassword)
         return;
       }
       else if (Http.status === 201) {

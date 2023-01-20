@@ -122,12 +122,26 @@ header {
 .user-wrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 300px !important;
+}
+.user-wrapper div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-wrapper div .content{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .user-wrapper img {
     border-radius: 50%;
-    width: 55px;
-    height: 50px;
+    width: 60px;
+    height: 55px;
+    border: 3px solid #35339a;
     margin-right: 1rem;
 }
 

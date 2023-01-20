@@ -3,14 +3,16 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
-const port =  process.env.PORT ;
+const port = process.env.PORT || 3000;
 const bycrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 
 // Databases Requires
 const { SignUpUserModel } = require("./Database/signupdatabase");
 const { AdmissionUserModel } = require("./Database/admissiondatbase");
 const { DescModel } = require("./Database/descdatabase");
+const { ContactUserModel } = require("./Database/contact");
 
 // Calling express
 const app = express();
@@ -18,6 +20,7 @@ const app = express();
 app.use(cors({ origin: "*", credentials: true }));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // Conecting to Front End
 app.use("/", express.static(path.resolve(path.join(__dirname, "public"))));
@@ -51,7 +54,7 @@ app.post("/signUp", (req, res, next) => {
           });
           // Saving Sign Up User to The Data Base
           newSignUpPerson.save((err, data) => {
-            if (!err) {
+            if (req.body.password === req.body.confPassword) {
               // Sending Message to Fornt End With Status  Of 200
               res.status(200).send({
                 message: "Sign Up SuccesFull !",
@@ -80,19 +83,27 @@ app.post("/logIn", (req, res, next) => {
           if (isFound) {
             var token = jwt.sign(
               {
+                id: data._id,
+                username: data.username,
                 email: req.body.email,
+                phone: data.phone,
                 password: req.body.password,
+                confPassword: data.confPassword,
               },
-              "hIHkthjUhuvfhuiyvnjy7yii9trefhon"
+              "hIHkthjUhuvfhuiyvnjy7yii9trefhon",
+              { expiresIn: "1h" }
             );
-            console.log(token);
             res.cookie("jToken", token, {
               maxAge: 86_400_000,
               httpOnly: true,
             });
-            //Sending Message to Fornt End With Status  Of 200
+            const decodeData = jwt.verify(
+              token,
+              "hIHkthjUhuvfhuiyvnjy7yii9trefhon"
+            );
             res.status(200).send({
-              data: data.username + "  Welcome To Our Website ! ",
+              data: "Welcome To Our Website ! ",
+              user_data_Secret: decodeData,
             });
           } else {
             //Sending Message to Fornt End With Status  Of 405
@@ -108,8 +119,8 @@ app.post("/logIn", (req, res, next) => {
         });
       }
     } else if (
-      req.body.email === "admin@gmail.com" &&
-      req.body.password === "admin"
+      req.body.email === "syedtariqueahmed@admin.com" &&
+      req.body.password === "syedtariqueahmed675443"
     ) {
       //Sending Message to Fornt End With Status  Of 201
       res.status(201).send({
@@ -118,57 +129,11 @@ app.post("/logIn", (req, res, next) => {
     } else {
       //Sending Message to Fornt End With Status  Of 405
       res.status(405).send({
-        message: "Email is Inccorect !",
+        message: "Inccorect !",
       });
     }
   });
 });
-
-// app.use((req, res, next) => {
-//   if (!req.cookies.jToken) {
-//     res.status(401).send({
-//       message: "Wrong Token",
-//     });
-//     return;5
-//   }
-//   jwt.verify(
-//     req.cookies,
-//     "hIHkthjUhuvfhuiyvnjy7yii9trefhon",
-//     (err, decodeData) => {
-//       if (!err) {
-//         console.log("hellollo");
-//         const issueDate = decodeData.iat * 1000;
-//         const nowDate = new Date().getTime();
-//         const diff = nowDate - issueDate; // 86400,000
-//         console.log(diff);
-//         if (diff > 300000) {
-//           res.status(401).send({
-//             message: "Token Expired",
-//           });
-//         } else {
-//           var token = jwt.sign(
-//             {
-//               id: decodeData.id,
-//               email: decodeData.email,
-//               password: decodeData.password,
-//             },
-//             "hIHkthjUhuvfhuiyvnjy7yii9trefhon"
-//           );
-//           res.cookie("jToken", token, {
-//             maxAge: 86_400_000,
-//             httpOnly: true,
-//           });
-//           req.body.jToken = decodeData;
-//           next();
-//         }
-//       } else {
-//         res.status(401).send({
-//           message: "invalid token",
-//         });
-//       }
-//     }
-//   );
-// });
 
 // Making  The Admission POST Request For Adding Student
 
@@ -197,21 +162,91 @@ app.post("/Admission", (req, res, next) => {
       newAdmissionPerson.save((err, data) => {
         if (!err) {
           //Sending Message to Fornt End With Status  Of 405
-          res.status(200).send({
-            message: "Your Form Has Been Submitted  !",
-            data,
+          var token = jwt.sign(
+            {
+              id: data._id,
+              username: data.username,
+              email: req.body.email,
+              phone: data.phone,
+              password: req.body.password,
+              confPassword: data.confPassword,
+            },
+            "hIHkthjUhuvfhuiyvnjy7yii9trefhon",
+            { expiresIn: "1h" }
+          );
+          res.cookie("A_DMI", token, {
+            maxAge: 86_400_000,
+            httpOnly: true,
           });
-        } else {
-          //Sending Message to Fornt End With Status  Of 405
-          res.status(405).send({
-            message: "User creation Failed",
-          });
+          const decodeData = jwt.verify(
+            token,
+            "hIHkthjUhuvfhuiyvnjy7yii9trefhon"
+          );
         }
       });
     }
   });
 });
 
+app.get("/profile", (req, res, next) => {
+  const token = req.cookies.jToken;
+  const decode = jwt.verify(token, "hIHkthjUhuvfhuiyvnjy7yii9trefhon");
+  res.send(decode);
+});
+app.get("/profiles", (req, res, next) => {
+  const token = req.cookies.A_DMI;
+  const decode = jwt.verify(token, "hIHkthjUhuvfhuiyvnjy7yii9trefhon");
+  res.send(decode);
+});
+
+app.delete("/condelete/:id", (req, res) => {
+  ContactUserModel.findByIdAndRemove(req.params.id, (err, data) => {
+    if (!err) {
+      res.status(200).send({
+        message: "Refresh Your Page !",
+      });
+    } else {
+      res.status(500).send({
+        message: "error",
+        err,
+      });
+    }
+  });
+});
+app.get("/condata", (req, res) => {
+  // Finding all DATA from Database
+  const data = ContactUserModel.find({}, (err, data) => {
+    if (err) {
+      // Sending Error If error
+      res.send(err);
+    } else {
+      // Sending Data to the Front End
+      res.send(data);
+    }
+  });
+});
+app.put("/Contactupdate/:id", (req, res) => {
+  ContactUserModel.findOneAndUpdate(
+    { id: req.params.id },
+    {
+      $set: {
+        firstname: req.body.firstname,
+        email: req.body.email,
+        messgae: req.body.messgae,
+      },
+    }
+  )
+    .then((data) => {
+      res.status(200).send({
+        message: "User Updated !",
+      });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err,
+      });
+    });
+});
 // Making Get Requests for getting all data from Database
 
 app.get("/descdata", (req, res) => {
@@ -249,7 +284,6 @@ app.get("/signupdata", (req, res) => {
     } else {
       // Sending Data to the Front End
       res.send(data);
-      console.log(data)
     }
   });
 });
@@ -272,26 +306,31 @@ app.delete("/delete/:id", (req, res) => {
 });
 
 app.put("/update/:id", (req, res) => {
-  SignUpUserModel.findOneAndUpdate(
-    { id: req.params.id },
-    {
-      $set: {
-        username: req.body.username,
-        email: req.body.email,
-        phone: req.body.phone,
-      },
+  let updateObj = {};
+  if (req.body.username) {
+    updateObj.username = req.body.username;
+  }
+  if (req.body.email) {
+    updateObj.email = req.body.email;
+  }
+  if (req.body.phone) {
+    updateObj.phone = req.body.phone;
+  }
+  SignUpUserModel.findByIdAndUpdate(
+    req.params.id,
+    updateObj,
+    { new: true },
+    (err, data) => {
+      if (!err) {
+        res.status(200).send({
+          message: "User Updated",
+          data: data,
+        });
+      } else {
+        res.status(500).send("error happened");
+      }
     }
-  )
-    .then((data) => {
-      res.status(200).send({
-        message: "User Updated !",
-      });
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err,
-      });
-    });
+  );
 });
 app.delete("/admidelete/:id", (req, res) => {
   AdmissionUserModel.findByIdAndRemove(req.params.id, (err, data) => {
@@ -309,31 +348,41 @@ app.delete("/admidelete/:id", (req, res) => {
 });
 
 app.put("/admiupdate/:id", (req, res) => {
-  AdmissionUserModel.findOneAndUpdate(
-    { id: req.params.id },
-    {
-      $set: {
-        stDname: req.body.stDname,
-        email: req.body.email,
-        contactno: req.body.contactno,
-        adress: req.body.adress,
-      },
+  let updateObj = {};
+  if (req.body.stDname) {
+    updateObj.stDname = req.body.stDname;
+  }
+  if (req.body.adminemail) {
+    updateObj.adminemail = req.body.adminemail;
+  }
+  if (req.body.contact) {
+    updateObj.contact = req.body.contact;
+  }
+  if (req.body.adress) {
+    updateObj.adress = req.body.adress;
+  }
+  if (req.body.level) {
+    updateObj.level = req.body.level;
+  }
+  AdmissionUserModel.findByIdAndUpdate(
+    req.params.id,
+    updateObj,
+    { new: true },
+    (err, data) => {
+      if (!err) {
+        res.status(200).send({
+          message: "User Updated",
+          data: data,
+        });
+      } else {
+        res.status(500).send("error happened");
+      }
     }
-  )
-    .then((data) => {
-      res.status(200).send({
-        message: "User Updated !",
-      });
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err,
-      });
-    });
+  );
 });
 
 app.post("/logout", (req, res, next) => {
-  res.cookie("jToken", "", {
+  res.cookie("jToken", " ", {
     maxAge: 86_400_000,
     httpOnly: true,
   });
@@ -361,7 +410,41 @@ app.post("/desc", (req, res, next) => {
     }
   });
 });
-
+app.post("/contact", (req, res, next) => {
+  ContactUserModel.findOne({ email: req.body.email }, (err, data) => {
+    if (err || data) {
+      if (data.email === req.body.email) {
+        //Sending Message to Fornt End With Status  Of 405
+        res.status(405).send({
+          message: "User Already Exists Please Make Another Email ID !",
+        });
+      }
+    } else {
+      const newContactPerson = ContactUserModel({
+        // Making The Schema for Getting All Information From The  Front  End and save it
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        messgae: req.body.messgae,
+      });
+      // Saving Sign Up User to The Data Base
+      newContactPerson.save((err, data) => {
+        if (!err) {
+          //Sending Message to Fornt End With Status  Of 405
+          res.status(200).send({
+            message: "Your Form Has Been Submitted  !",
+            data,
+          });
+        } else {
+          //Sending Message to Fornt End With Status  Of 405
+          res.status(405).send({
+            message: "User creation Failed",
+          });
+        }
+      });
+    }
+  });
+});
 app.listen(port, () => {
   console.log("Server is Running On PORT Number : ", port);
 });

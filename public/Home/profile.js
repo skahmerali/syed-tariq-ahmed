@@ -1,80 +1,173 @@
 const url = "https://syed-tariq-ahmed-production.up.railway.app";
-
 function getData() {
   var showdata = document.getElementById("showdata");
-  const Http = new XMLHttpRequest();
-  Http.open("GET", url + "/signupdata");
-  Http.setRequestHeader("Content-Type", "application/json");
-  Http.send(null);
-  Http.onreadystatechange = (e) => {
-    if (Http.readyState === 4) {
-      let jsonRes = JSON.parse(Http.responseText);
-      console.log(jsonRes[0]._id)
-      let out;
-      var i = 1;
-      out = `
-        <div class="Admission" id='hellll'>
-        <h2>Admisson Profile Edit</h2>
+  const data = localStorage.getItem("name");
+  const id = localStorage.getItem("id");
+  const email = localStorage.getItem("email");
+  const phone = localStorage.getItem("phone");
+  const password = localStorage.getItem("password");
+  console.log(id);
+  console.log(data);
+  console.log(email);
+  console.log(phone);
+  console.log(password);
+  let out;
+  out = `
+        <div class="Admission" id="${id}">
+        <h2>Profile Edit</h2>
         <hr />
-        <label for="stdName">Student Name</label>
-        <input type="text" id="stDname" value='${jsonRes[0].stDname}'disabled >
+        <label for="stdName">User Name</label>
+        <input type="text" id="stDname" value='${data}'disabled >
         <label for="email">Email</label>
-        <input type="email" id="email" value='${jsonRes[0].email}'disabled >
-        <label for="level"  >Level</label>
-        <input type="level" id="level" value='${jsonRes[0].level}'disabled >
-        <label for="email">Contact No.</label>
-        <input type="jhgj" id="contact" value='${jsonRes[0].contactno}' disabled>
-        <button onclick="return update('${jsonRes[0]._id}' , '${jsonRes[0].stDname}', '${jsonRes[0].email}', '${jsonRes[0].contactno}', '${jsonRes[0].level}')">Update</button>
+        <input type="email" id="email" value='${email}'disabled >
+        <label for="level"  >Contact</label>
+        <input type="level" id="level" value='${phone}'disabled >
+        <button onclick="return updateprofile('${id}','${data}','${email}','${phone}')">Update</button>
     </div>
         `;
-      showdata.innerHTML += out;
-    }
-  };
-  return false;
+  showdata.innerHTML += out;
 }
-function update(_id, stDname, email, contactno, level) {
-  console.log(_id);
-  document.getElementById("hellll").innerHTML = `
-  <div class="Admission" id='${_id}'>
-  <h2>Admisson Profile Edit</h2>
+getData();
+function updateprofile(id, data, email, phone) {
+  console.log(id);
+  document.getElementById(`${id}`).innerHTML = `
+  <div class="Admission" id="${id}">
+  <h2>Profile Edit</h2>
         <hr />
-        <label for="stdName">Student Name</label>
-  <input type='text' class='stDname' id='${_id}-stDname' value='${stDname}' width='40'>
+        <label for="stdName">User Name</label>
+  <input type='text' class='stDname' id='${id}-name' value='${data}' width='40'>
 <label for="email">Email</label>
-  <input type='text' class='email'  id='${_id}-email'value='${email}' width='40'>
+  <input type='text' class='email'  id='${id}-email' value='${email}' width='40'>
        <label for="email">Contact No.</label>
-<input type='text' class='contactno' id='${_id}-contactno' value='${contactno}' width='40'>
- <label for="level"  >Level</label>
-  <input type='text' class='level' id='${_id}-level' value='${level}' width='40'>
-  <button onclick="return update_data('${_id}')">Update Admisson Profile</button>
+<input type='text' class='contactno' id='${id}-phone' value='${phone}' width='40'>
+  <button onclick="return update_data('${id}')">Update Profile</button>
   </div>
   `;
   return false;
 }
 function update_data(id) {
-  console.log(id)
-  const stDname = document.getElementById(`${id}-stDname`).value;
-  const email = document.getElementById(`${id}-email`).value;
-  const contactno = document.getElementById(`${id}-contactno`).value;
-  const level = document.getElementById(`${id}-level`).value;
-  console.log(stDname);
-  console.log(email);
-  console.log(contactno);
-  console.log(level);
-  axios
-    .put(`http://localhost:3000/update/${id}`, {
-      stDname: stDname,
-      email: email,
-      contactno: contactno,
-      level : level
-    })
-    .then((reponse) => {
-      alert(reponse.data.message);
-      console.log(reponse);
-    })
-    .catch((err) => {
-      alert(err);
-    });
+  const url = "http://localhost:3000";
+  const Http = new XMLHttpRequest();
+  Http.open("PUT", url + `/update/${id}`);
+  Http.setRequestHeader("Content-Type", "application/json");
+  let obj = {
+    username: document.getElementById(`${id}-name`).value,
+    email: document.getElementById(`${id}-email`).value,
+    phone: document.getElementById(`${id}-phone`).value,
+  };
+  console.log(obj);
+  const _id = id;
+  Http.send(JSON.stringify(obj));
+  Http.onreadystatechange = (e) => {
+    console.log(e);
+    if (Http.readyState === 4) {
+      if (Http.status === 200) {
+        const data = localStorage.setItem("name", obj.username);
+        const id = localStorage.setItem("id", _id);
+        const email = localStorage.setItem("email", obj.email);
+        localStorage.setItem("phone", obj.phone);
+        let jsonRes = JSON.parse(Http.responseText);
+        alert(jsonRes.message);
+        window.location.reload();
+        getData();
+      } else {
+        let jsonRes = JSON.parse(Http.responseText);
+        console.log(jsonRes);
+      }
+    }
+  };
+  return false;
 }
 
-getData()
+function AdmigetData() {
+  var showdata = document.getElementById("showdata");
+  const data = localStorage.getItem("stDname");
+  const id = localStorage.getItem("ID");
+  const adminemail = localStorage.getItem("adminemail");
+  const contact = localStorage.getItem("contact");
+  const adress = localStorage.getItem("adress");
+  const level = localStorage.getItem("level");
+  console.log(id);
+  console.log(data);
+  console.log(adress);
+  console.log(level);
+  let out;
+  out = `
+        <div class="Admission" id="admi-${id}">
+        <h2>Admision Edit</h2>
+        <hr />
+        <label for="stdName">Student Name</label>
+        <input type="text" id="stDname" value='null' disabled >
+        <label for="email">Email</label>
+        <input type="email" id="email" value='null' disabled >
+        <label for="level"  >Contact</label>
+        <input type="level" id="level" value='null' disabled >
+        <label for="level"  >Adress</label>
+        <input type="level" id="level" value='null' disabled >
+        <label for="level"  >Level</label>
+        <input type="level" id="level" value='null' disabled >
+        <input type='button' value='Update'style='margin-top:30px onclick="return update('${id}','${data}','${adminemail}','${contact}','${adress}','${level}')" disabled>
+    </div>
+        `;
+  showdata.innerHTML += out;
+  return false;
+}
+AdmigetData();
+function update(id, data, email, contact, adress, level) {
+  console.log(id);
+  document.getElementById(`admi-${id}`).innerHTML = `
+  <div class="Admission" id="admi-${id}">
+  <h2>Profile Edit</h2>
+        <hr />
+        <label for="Student Name">User Name</label>
+  <input type='text' class='stDname' id="${id}-stDname" value='${data}' width='40'>
+<label for="email">Email</label>
+  <input type='text' class='email'  id="${id}-admiemail" value='${email}' width='40'>
+       <label for="email">Contact.</label>
+<input type='text' class='contactno' id="${id}-contact" value='${contact}' width='40'>
+       <label for="email">Adress</label>
+<input type='text' class='contactno' id="${id}-adress" value='${adress}' width='40'>
+       <label for="email">Level</label>
+<input type='text' class='contactno' id="${id}-level" value='${level}' width='40'>
+  <button onclick="return update_data_admi('${id}')">Update Profile</button>
+  </div>
+  `;
+  return false;
+}
+function update_data_admi(id) {
+  const url = "http://localhost:3000";
+  const Http = new XMLHttpRequest();
+  Http.open("PUT", url + `/admiupdate/${id}`);
+  Http.setRequestHeader("Content-Type", "application/json");
+  let obj = {
+    stDname: document.getElementById(`${id}-stDname`).value,
+    adminemail: document.getElementById(`${id}-admiemail`).value,
+    contact: document.getElementById(`${id}-contact`).value,
+    adress: document.getElementById(`${id}-adress`).value,
+    level: document.getElementById(`${id}-level`).value,
+  };
+  console.log(obj);
+  const _id = id;
+  Http.send(JSON.stringify(obj));
+  Http.onreadystatechange = (e) => {
+    console.log(e);
+    if (Http.readyState === 4) {
+      if (Http.status === 200) {
+        localStorage.setItem("stDname", obj.stDname);
+        localStorage.setItem("id", _id);
+        localStorage.setItem("adminemail", obj.adminemail);
+        localStorage.setItem("contact", obj.contact);
+        localStorage.setItem("adress", obj.adress);
+        localStorage.setItem("level", obj.level);
+        let jsonRes = JSON.parse(Http.responseText);
+        alert(jsonRes.message);
+        window.location.reload();
+        getData();
+      } else {
+        let jsonRes = JSON.parse(Http.responseText);
+        console.log(jsonRes.message);
+      }
+    }
+  };
+  return false;
+}

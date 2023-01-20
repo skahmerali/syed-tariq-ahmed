@@ -3,7 +3,7 @@ mongoose.connect(
   ("mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority"),
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
-
+mongoose.set('strictQuery' , false)
 mongoose.connection.on("connected", () => {
   console.log("Description Mongoose Connected Succesfully !");
 });
