@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
 mongoose.connect(
-  ("mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority"),
+  "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
-mongoose.set('strictQuery' , false)
+mongoose.set("strictQuery", false);
 mongoose.connection.on("connected", () => {
   console.log("Sign Up Mongoose Connected Succesfully !");
 });
@@ -14,14 +14,19 @@ mongoose.connection.on("disconnected", () => {
 });
 
 var userSchema = new mongoose.Schema({
-  username : String,
-  email : String,
-  phone : Number,
-  password : String,
-  confPassword : String
+  username: String,
+  email: String,
+  phone: Number,
+  password: String,
+  confPassword: String,
+});
+var imageSchema = new mongoose.Schema({
+  name : {
+    type : String
+  }
 });
 var SignUpUserModel = mongoose.model("School Sign Up Data Base", userSchema);
 
 module.exports = {
-    SignUpUserModel : SignUpUserModel
-}
+  SignUpUserModel: SignUpUserModel,
+};

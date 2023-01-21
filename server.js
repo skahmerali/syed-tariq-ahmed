@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 
 // Databases Requires
 const { SignUpUserModel } = require("./Database/signupdatabase");
-const { AdmissionUserModel } = require("./Database/admissiondatbase");
+const { AdmissionUserModel } = require("./Database/admissiondatbase"); 
 const { DescModel } = require("./Database/descdatabase");
 const { ContactUserModel } = require("./Database/contact");
 
