@@ -21,12 +21,15 @@ var userSchema = new mongoose.Schema({
   confPassword: String,
 });
 var imageSchema = new mongoose.Schema({
-  name : {
-    type : String
+  image : {
+    data : Buffer,
+    contentType: String,
   }
 });
 var SignUpUserModel = mongoose.model("School Sign Up Data Base", userSchema);
+var imageModel = mongoose.model("ImageData Base", imageSchema);
 
 module.exports = {
   SignUpUserModel: SignUpUserModel,
+  imageModel: imageModel,
 };

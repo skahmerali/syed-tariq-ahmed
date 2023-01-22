@@ -7,12 +7,14 @@ const port = process.env.PORT || 3000;
 const bycrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
 
 // Databases Requires
 const { SignUpUserModel } = require("./Database/signupdatabase");
-const { AdmissionUserModel } = require("./Database/admissiondatbase"); 
+const { AdmissionUserModel } = require("./Database/admissiondatbase");
 const { DescModel } = require("./Database/descdatabase");
 const { ContactUserModel } = require("./Database/contact");
+const { imageModel } = require("./Database/signupdatabase");
 
 // Calling express
 const app = express();
@@ -81,6 +83,7 @@ app.post("/logIn", (req, res, next) => {
         // Breaking The HASH  Password For Checking The User Is Valid or Not Valid by comparing the old password to the req.body.password
         bycrypt.compare(req.body.password, data.password, (err, isFound) => {
           if (isFound) {
+            console.log("Hello !")
             var token = jwt.sign(
               {
                 id: data._id,
@@ -92,16 +95,18 @@ app.post("/logIn", (req, res, next) => {
               },
               "hIHkthjUhuvfhuiyvnjy7yii9trefhon",
               { expiresIn: "1h" }
-            );
-            res.cookie("jToken", token, {
-              maxAge: 86_400_000,
-              httpOnly: true,
-            });
-            const decodeData = jwt.verify(
+              );
+              console.log(token)
+              res.cookie("jToken", token, {
+                maxAge: 86_400_000,
+                httpOnly: true,
+              });
+              const decodeData = jwt.verify(
               token,
               "hIHkthjUhuvfhuiyvnjy7yii9trefhon"
-            );
-            res.status(200).send({
+              );
+              console.log(decodeData)
+              res.status(200).send({
               data: "Welcome To Our Website ! ",
               user_data_Secret: decodeData,
             });
@@ -445,6 +450,38 @@ app.post("/contact", (req, res, next) => {
     }
   });
 });
+const Storage = multer.diskStorage({
+  destination: "uploads-Folder",
+  filename: (req, file, cbl) => {
+    cbl(null, file.originalname);
+  },
+});
+const upload = multer({ storage: Storage }).single("imgTesting");
+app.post("/upload", upload ,(req, res, next) => {
+  upload(req, res, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const imageUpload = new imageModel({
+        image: {
+          data: req.file.filename,
+          contentType: "image/png",
+        },
+      });
+      imageUpload.save((err,data) =>{
+        if (err) {
+          console.log(err)
+        }
+        else{
+          res.status(200).send({
+            message : "hello Bhai Challing"
+          })
+        }
+      });
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log("Server is Running On PORT Number : ", port);
 });

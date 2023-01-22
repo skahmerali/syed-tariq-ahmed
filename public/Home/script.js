@@ -4,6 +4,9 @@ const data = localStorage.getItem("name");
 const email = localStorage.getItem("email");
 const phone = localStorage.getItem("phone");
 const password = localStorage.getItem("password");
+const username = document.getElementById("username");
+
+username.innerText = data
 console.log(data);
 console.log(email);
 console.log(phone);

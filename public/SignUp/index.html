@@ -20,27 +20,29 @@
     <div class="nav">
       <div class="logo">
           <h1>
-            Syed Tarique Ahmed
+            Syed Tarique Ahmed <i class="fa-solid fa-bars" onclick="toggleinMenu()"></i>
           </h1>
         </div>
-        <div class="nav-links">
-          <ul>
-            <li><a href="./home.html">HOME</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="#">SERVICES</a></li>
-            <li><a href="#">CONTACT</a></li>
-          </ul>
-        </div>
-        <div class="buttons">
-          <button><a href="./index.html"> Sign Up</a></button>
-          <button><a href="./Login/login.html"> Sign In</a></button>
+        <div class="menu" id="menu">
+          <div class="nav-links">
+            <ul>
+              <li><a href="#home">HOME</a></li>
+              <li><a href="#course">COURSES</a></li>
+              <li><a href="#teacher">ABOUT US</a></li>
+              <li><a href="#pricing">PRICING</a></li>
+            </ul>
+          </div>
+          <div class="buttons">
+            <a href="./index.html">Sign Up</a>
+            <a href="../Login/login.html">Sign In </a>
+          </div>
         </div>
       </div>
       <div class="signup-card-container">
         <div class="signup-card">
           <!-- <div class="signup-card-logo">
           </div>-->
-          <form class="signup-card-form form" onsubmit="return sinup()">
+          <form class="signup-card-form form"  enctype="multipart/form-data">
             <div class="signup-card-header">
               <h1>Sign Up</h1>
             </div> 
@@ -63,7 +65,7 @@
                   <span class="form-item-icon material-symbols-outlined">lock</span>
                   <input type="password" id="confirm-password" placeholder="Enter Confirm Password" >
                 </div>
-                <button type ="submit">Sign Up</button>
+                <button type ="submit" onclick="return sinup()">Sign Up</button>
               </form>
       <img src="./images/register.svg"     alt="">
 

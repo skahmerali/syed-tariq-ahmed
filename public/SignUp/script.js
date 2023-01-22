@@ -1,4 +1,5 @@
-var port = "https://syed-tariq-ahmed-production.up.railway.app";
+// var port = "https://syed-tariq-ahmed-production.up.railway.app";
+var port = "http://localhost:3000";
 
 function sinup() {
   var obj = {
@@ -18,11 +19,9 @@ function sinup() {
       if (Http.status === 200) {
         console.log(jsonRes);
         swal("Good job!", jsonRes.message, "success");
-        setInterval(function () {
-          window.location.href = "../Login/login.html";
+        setInterval(() => {
+          window.location.href = "../Login/login.html"
         }, 3000);
-        console.log(jsonRes);
-        return;
       } else {
         swal("Opps!", jsonRes.message, "error");
         console.log(jsonRes.message);
@@ -31,4 +30,10 @@ function sinup() {
   };
 
   return false;
+}
+
+let menu = document.getElementById("menu");
+function toggleinMenu() {
+  console.log("ello");
+  menu.classList.toggle("open-menu");
 }

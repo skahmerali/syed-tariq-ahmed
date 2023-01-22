@@ -1,5 +1,6 @@
 // var port = "https://sir-web.herokuapp.com";
-var port = "https://syed-tariq-ahmed-production.up.railway.app";
+// var port = "https://syed-tariq-ahmed-production.up.railway.app";
+var port = "http://localhost:3000";
 
 function login() {
   var obj = {
@@ -17,9 +18,6 @@ function login() {
       if (Http.status === 200) {
         console.log(jsonRes)
         swal("Good job!", jsonRes.data , "success");
-        setInterval(function () {
-          window.location.href = "../Home/home.html";
-        }, 3000);
         console.log(jsonRes.user_data_Secret.id);
         localStorage.setItem("id" , jsonRes.user_data_Secret.id)
         localStorage.setItem("name" , jsonRes.user_data_Secret.username)
@@ -27,6 +25,9 @@ function login() {
         localStorage.setItem("`password" , jsonRes.user_data_Secret.password)
         localStorage.setItem("phone" , jsonRes.user_data_Secret.phone)
         localStorage.setItem("confPassword" , jsonRes.user_data_Secret.confPassword)
+        setInterval(function () {
+          window.location.href = "../Home/home.html";
+        }, 3000);
         return;
       }
       else if (Http.status === 201) {
@@ -44,4 +45,10 @@ function login() {
   };
 
   return false;
+}
+
+let menu = document.getElementById("menu");
+function toggleinMenu() {
+  console.log("ello");
+  menu.classList.toggle("open-menu");
 }

@@ -31,9 +31,11 @@
   background-color: #003e81;
   border-radius: 40px !important;
 }
-::selection{
+
+::selection {
   background-color: rgb(102, 143, 255);
 }
+
 .ribbon {
   position: relative;
   background: #6868ff;
@@ -42,7 +44,7 @@
   padding: 10px 20px;
   width: 270px;
   font-size: 32px;
-  clip-path: polygon(100% 0, 93% 50% , 100% 99% , 0% 100%,7% 50%,0% 0%);
+  clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -52,7 +54,8 @@
   margin-left: 540px;
   font-family: 'Grandstander', cursive;
 }
-.testi{
+
+.testi {
   width: 230px !important;
   margin-bottom: 40px !important;
 }
@@ -474,6 +477,7 @@ nav .logo h2 {
   text-align: center;
   flex-direction: column;
 }
+
 .name {
   font-size: 37px;
   font-weight: 600;
@@ -658,7 +662,8 @@ nav .logo h2 {
   width: 100%;
   height: 100vh;
 }
-.pricings a{
+
+.pricings a {
   text-decoration: none;
 }
 
@@ -1070,7 +1075,7 @@ nav .logo h2 {
 
 @media (max-width : 420px) {
   .nav {
-    width: 100% !important;
+    width: 420px !important;
     height: 72px;
   }
 
@@ -1089,7 +1094,7 @@ nav .logo h2 {
 
   .menu {
     position: fixed;
-    background-color: #007bff;
+    background-color: #6868ff;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -1120,6 +1125,31 @@ nav .logo h2 {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    margin-top: 68px;
+  }
+
+  .buttons a {
+    padding: 8px 25px;
+    border: 0;
+    margin-right: 10px;
+    font-size: 15px;
+    background-color: transparent;
+    font-family: 'Poppins';
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #fff;
+    transition: 0.5s;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 29px;
+  }
+
+  .user img {
+    width: 60px;
+    cursor: pointer;
+    margin-top: -111px;
+    margin-left: 34px;
   }
 
   .menu ul li {
@@ -1180,8 +1210,16 @@ nav .logo h2 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 424vh;
+    height: 457vh;
     flex-direction: column;
+  }
+
+  .gif img {
+    position: absolute;
+    top: 56px;
+    width: 98px;
+    right: 43px;
+    z-index: -1;
   }
 
   .carousel .teachers-heading {
@@ -1208,18 +1246,36 @@ nav .logo h2 {
   }
 
   .name {
-    font-size: 30px;
+    font-size: 23px;
     font-weight: 600;
   }
 
   .testimonial p {
-    font-size: 12px;
-    width: 300px;
+    font-size: 11px;
+    width: 260px;
   }
 
   .testimonial {
-    width: 495px;
-    margin-left: 204px;
+    width: 347px;
+    margin-left: -4px;
+    background-image: url("./images/Untitled_design__2_-removebg-preview.png");
+    color: #fff;
+    padding: 10px 76px;
+    position: relative;
+    background-position: center;
+    background-size: 100% 100%;
+    height: 415px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+
+  .ribbon {
+    display: none;
   }
 
   .courses {
@@ -1637,5 +1693,198 @@ footer .wave#wave4 {
 
   100% {
     background-position-x: 1000px;
+  }
+}
+
+
+@media(max-width:920px){
+  .content-of-main .image {
+    width: 100% !important;
+    height: 100vh !important;
+  }
+
+  .menu {
+    position: fixed;
+    background-color: #6868ff;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-width: 0px;
+    right: 0;
+    margin-top: 550px;
+    height: 100vh;
+    z-index: -1;
+    transition: max-width 2s;
+  }
+
+  .menu.open-menu {
+    max-width: 220px;
+  }
+
+  .nav-links {
+    margin-top: 40px;
+  }
+
+  .buttons {
+    width: 100%;
+    height: 119px;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 68px;
+  }
+
+  .buttons a {
+    padding: 8px 25px;
+    border: 0;
+    margin-right: 10px;
+    font-size: 15px;
+    background-color: transparent;
+    font-family: 'Poppins';
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #fff;
+    transition: 0.5s;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 29px;
+  }
+
+  .user img {
+    width: 60px;
+    cursor: pointer;
+    margin-top: -111px;
+    margin-left: 34px;
+  }
+
+  .menu ul li {
+    font-size: 20px !important;
+  }
+
+
+  .nav .logo h1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 1000px;
+  }
+
+  .nav .logo h1 i {
+    display: block;
+  }
+
+  .courses {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 154vh;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+
+  .ribbon {
+    position: relative;
+    background: #6868ff;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    width: 270px;
+    font-size: 32px;
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: -40px;
+    margin-left: 364px;
+    font-family: 'Grandstander', cursive;
+  }
+
+  .testimonial {
+    width: 529px;
+    margin-left: -208px;
+    background-image: url("./images/Untitled_design__2_-removebg-preview.png");
+    color: #fff;
+    padding: 10px 54px;
+    position: relative;
+    background-position: center;
+    background-size: 100% 100%;
+    height: 582px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .inner img {
+    width: 479px;
+    margin-left: 27px;
+    margin-right: 232px;
+  }
+
+  .gif img {
+    position: absolute;
+    top: 60px;
+    width: 249px;
+    right: 130px;
+    z-index: -1;
+  }
+
+  .content-of-description p {
+    font-size: 18px;
+    margin-left: 50px;
+  }
+
+  .content-of-description h1 {
+    font-size: 39px;
+    font-variant: small-caps;
+    margin-left: 50px;
+  }
+
+  .content-of-description h3 {
+    margin-left: 93px;
+  }
+
+  .ribbon {
+    display: none;
+  }
+
+  .contact-form {
+    position: absolute;
+    padding: 70px 50px;
+    background-color: #fff;
+    width: calc(100% - 346px);
+    margin-left: 266px;
+    box-shadow: 0 0px 40px rgba(0, 0, 0, 0.224);
+    padding-left: 250px;
+    height: 100%;
+    border-radius: 30px;
+  }
+
+  .contact .contactinfo {
+    margin-left: 116px;
+    position: absolute;
+    top: 40px;
+    width: 350px;
+    height: calc(100% - 80px);
+    background-color: #6868ff;
+    z-index: 1;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.24);
+    border-radius: 30px;
   }
 }
