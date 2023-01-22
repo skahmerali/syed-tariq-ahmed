@@ -1,5 +1,6 @@
 // var port = "https://sir-web.herokuapp.com";
-var port = "https://syed-tariq-ahmed-production.up.railway.app"
+var port = "https://syed-tariq-ahmed-production.up.railway.app";
+// var port = "http://localhost:3000";
 
 function admit() {
   console.log("hello");
@@ -23,48 +24,54 @@ function admit() {
     if (Http.readyState === 4) {
       console.log(Http.status);
       var jsonRes = JSON.parse(Http.responseText);
-      var stDname = document.getElementById("username");
-      var age = document.getElementById("age");
-      var email = document.getElementById("email");
-      var contactno = document.getElementById("phone");
-      var adress = document.getElementById("adress");
-      var nationality = document.getElementById("nation");
-      var placeofBIrth = document.getElementById("placeofbirth");
-      var level = document.getElementById("level");
-      var jsonRes = JSON.parse(Http.responseText);
+      console.log(jsonRes);
       if (Http.status === 200) {
-        if (stDname.value === " ") {
-          swal("Opps!", "Please Write Your Name", "error");
-        }
-        if (email.value === " ") {
-          swal("Opps!", "Please Write Your email", "error");
-        }
-        if (age.value === " ") {
-          swal("Opps!", "Please Write Your age", "error");
-        }
-        if (contactno.value === " ") {
-          swal("Opps!", "Please Write Your contact", "error");
-        }
-        if (adress.value === " ") {
-          swal("Opps!", "Please Write Your adress", "error");
-        }
-        if (nationality.value === " ") {
-          swal("Opps!", "Please Write Your nationality", "error");
-        }
-        if (placeofBIrth.value === " ") {
-          swal("Opps!", "Please Write Your place of Birth", "error");
-        } else {
-          swal("Good job!", jsonRes.message, "success");
-          setInterval(function () {
-            window.location.href = "../Home/home.html";
-          });
-        }
-      } else if (Http.status === 405) {
-        console.log(Http.status);
-        swal("Opps!", jsonRes.message, "error");
+        localStorage.setItem("ID", jsonRes.data._id);
+        localStorage.setItem("stDname", jsonRes.data.stDname);
+        localStorage.setItem("age", jsonRes.data.age);
+        localStorage.setItem("adminemail", jsonRes.data.email);
+        localStorage.setItem("contact", jsonRes.data.contactno);
+        localStorage.setItem("adress", jsonRes.data.adress);
+        localStorage.setItem("level", jsonRes.data.level);
+        alert("Good job! " + jsonRes.message + " success");
+        var jsonRes = JSON.parse(Http.responseText);
+        window.location.href = "../Home/home.html";
       }
+    } else if (Http.status === 405) {
+      console.log(Http.status);
+      var jsonRes = JSON.parse(Http.responseText);
+      swal("Opps!", jsonRes.message, "error");
     }
   };
-
   return false;
 }
+let subMenu = document.getElementById("sub");
+function toggleMenu() {
+  console.log("ello");
+  subMenu.classList.toggle("open-wrap");
+}
+let menu = document.getElementById("menu");
+function toggleinMenu() {
+  console.log("ello");
+  menu.classList.toggle("open-menu");
+}
+
+const button = document.getElementById("button");
+const slecet = document.getElementById("dropdow");
+const options = document.querySelectorAll(".option");
+const slecet_label = document.getElementById("select-label");
+
+button.addEventListener("click", (e) => {
+  e.preventDefault();
+  toggleHidden();
+});
+
+function toggleHidden() {
+  slecet.classList.toggle("hidden");
+}
+options.forEach(function (option) {
+  option.addEventListener("click", (event) => {
+    slecet_label.innerText = event.target.id;
+    toggleHidden();
+  });
+});

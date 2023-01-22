@@ -1,4 +1,5 @@
 const url = "https://syed-tariq-ahmed-production.up.railway.app";
+// const url = "http://localhost:3000";
 
 function getData() {
   var showdata = document.getElementById("showdata");
@@ -11,8 +12,8 @@ function getData() {
       let jsonRes = JSON.parse(Http.responseText);
       let out;
       var i = 1;
+      console.log(jsonRes[jsonRes.length - 1])
       jsonRes.map((data) => {
-        console.log(data)
         out = `
     <tbody>
     <tr id="${data._id}">

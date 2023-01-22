@@ -1,10 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100;200;300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,700;1,800;1,900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   font-family: "Poppins";
   box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #003e81;
+  border-radius: 40px !important;
+}
+
+::selection {
+  background-color: rgb(102, 143, 255);
+}
+
+.ribbon {
+  position: relative;
+  background: #6868ff;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  width: 270px;
+  font-size: 32px;
+  clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: -40px;
+  margin-left: 540px;
+  font-family: 'Grandstander', cursive;
+}
+
+.testi {
+  width: 230px !important;
+  margin-bottom: 40px !important;
 }
 
 .nav {
@@ -314,7 +367,7 @@ nav .logo h2 {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   flex-wrap: wrap;
   margin-bottom: 50px;
 }
@@ -331,17 +384,19 @@ nav .logo h2 {
   cursor: pointer;
   margin-top: -80px;
   margin-bottom: -90px;
-  transition: transform 0.5s;
+  transition: 0.5s;
 }
 
 .course-card:hover {
-  transform: translateY(-20px);
+  transform: translateY(-10px);
+  background-color: #6868ff1c;
 }
 
 .courses .course-card h1 {
   font-size: 35px;
   font-weight: 600;
   color: #6868ff;
+  font-family: 'Grandstander', cursive;
 }
 
 .course-card p {
@@ -406,17 +461,46 @@ nav .logo h2 {
 }
 
 .testimonial {
-  width: 600px;
-  margin-left: 40px;
+  width: 591px;
+  margin-left: 90px;
+  background-image: url("./images/Untitled_design__2_-removebg-preview.png");
+  color: #fff;
+  padding: 10px 76px;
+  position: relative;
+  background-position: center;
+  background-size: 100% 100%;
+  height: 640px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
 }
 
 .name {
-  font-size: 40px;
+  font-size: 37px;
   font-weight: 600;
+  margin-top: -60px;
+  width: 460px;
+  /* font-family: 'Poppins', sans-serif; */
+  /* font-family: 'Mochiy Pop P One', sans-serif; */
+  /* font-family: 'Rowdies', cursive */
+  font-family: 'Grandstander', cursive;
 }
 
 .testimonial p {
-  font-size: 18px;
+  font-size: 16px;
+  /* font-family: 'Pacifico', cursive;  */
+  font-weight: 400;
+  width: 450px;
+  /* font-family: 'Shadows Into Light', cursive; */
+  margin-bottom: -80px;
+  margin-right: -50px;
+  margin-left: -40px;
+  /* font-family: 'Josefin Sans', sans-serif; */
+  font-family: 'Prompt', sans-serif;
+  border-radius: 50%;
 }
 
 /* Description section Starts Here */
@@ -433,6 +517,14 @@ nav .logo h2 {
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.157);
+  z-index: -1;
+}
+
+.gif img {
+  position: absolute;
+  top: 60px;
+  width: 320px;
+  right: 130px;
   z-index: -1;
 }
 
@@ -506,8 +598,27 @@ nav .logo h2 {
   position: absolute;
   top: -110px;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6868ff;
   right: -20px;
 }
+
+.white-top h1 {
+  margin-top: 100px;
+  rotate: 25deg;
+  font-size: 25px;
+  background-color: #6868ff;
+  padding: 18px;
+  color: #fff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+
 
 .box {
   width: 100%;
@@ -550,6 +661,10 @@ nav .logo h2 {
   justify-content: center;
   width: 100%;
   height: 100vh;
+}
+
+.pricings a {
+  text-decoration: none;
 }
 
 .pricings .pricing {
@@ -631,13 +746,13 @@ nav .logo h2 {
 }
 
 #active:hover {
-  transform: scale(100%);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.356);
+  transform: translateY(-10px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.153);
 }
 
 .pricing:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.301);
-  transform: scale(110%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.142);
+  transform: scale(90%);
 }
 
 /* Testimonial Section Starts Here */
@@ -800,8 +915,8 @@ nav .logo h2 {
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.138);
-
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.24);
+  border-radius: 30px;
 }
 
 .contact-section .contact .contactinfo h2 {
@@ -864,9 +979,10 @@ nav .logo h2 {
   background-color: #fff;
   width: calc(100% - 150px);
   margin-left: 150px;
-  box-shadow: 0 0px 50px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 40px rgba(0, 0, 0, 0.224);
   padding-left: 250px;
   height: 100%;
+  border-radius: 30px;
 }
 
 .contact-form h2 {
@@ -940,7 +1056,7 @@ nav .logo h2 {
 
 .inputBx input[type="submit"] {
   border: none;
-  background-color: #007bff;
+  background-color: #6868ff;
   color: #fff;
   border-radius: 20px;
   padding: 10px 0 10px 0;
@@ -950,12 +1066,514 @@ nav .logo h2 {
 }
 
 .inputBx input[type="submit"]:hover {
-  border: 1px solid #007bff;
-  color: #007bff;
+  border: 1px solid #6868ff;
+  color: #6868ff;
   background: transparent;
 }
 
 /* Footer Starts Here */
+
+@media (max-width : 420px) {
+  .nav {
+    width: 420px !important;
+    height: 72px;
+  }
+
+  .nav .logo h1 {
+    font-size: 20px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .nav .logo h1 i {
+    margin-left: 20px;
+    display: block;
+  }
+
+  .menu {
+    position: fixed;
+    background-color: #6868ff;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-width: 0px;
+    right: 0;
+    margin-top: 550px;
+    height: 100vh;
+    z-index: -1;
+    transition: max-width 2s;
+  }
+
+  .menu.open-menu {
+    max-width: 220px;
+  }
+
+  .nav-links {
+    margin-top: 40px;
+  }
+
+  .buttons {
+    width: 100%;
+    height: 119px;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 68px;
+  }
+
+  .buttons a {
+    padding: 8px 25px;
+    border: 0;
+    margin-right: 10px;
+    font-size: 15px;
+    background-color: transparent;
+    font-family: 'Poppins';
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #fff;
+    transition: 0.5s;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 29px;
+  }
+
+  .user img {
+    width: 60px;
+    cursor: pointer;
+    margin-top: -111px;
+    margin-left: 34px;
+  }
+
+  .menu ul li {
+    font-size: 20px !important;
+  }
+
+
+  .nav .logo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .image h1 {
+    font-size: 23px;
+    color: #fff;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .image p {
+    width: 315px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .image button {
+    padding: 6px 19px;
+    outline: 0;
+    border: 0;
+    color: #000;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.838);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .courses .course-card {
+    width: 306px;
+    height: 278px;
+    margin-right: 20px;
+    text-align: center;
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.117);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: -80px;
+    margin-bottom: 108px;
+    transition: transform 0.5s;
+    margin-left: 15px;
+  }
+
+  .testimonials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 457vh;
+    flex-direction: column;
+  }
+
+  .gif img {
+    position: absolute;
+    top: 56px;
+    width: 98px;
+    right: 43px;
+    z-index: -1;
+  }
+
+  .carousel .teachers-heading {
+    font-size: 40px;
+    color: #6868ff;
+    margin-bottom: -90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: none;
+  }
+
+  .testimonials .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    flex-direction: column;
+  }
+
+  .inner img {
+    width: 302px;
+  }
+
+  .name {
+    font-size: 23px;
+    font-weight: 600;
+  }
+
+  .testimonial p {
+    font-size: 11px;
+    width: 260px;
+  }
+
+  .testimonial {
+    width: 347px;
+    margin-left: -4px;
+    background-image: url("./images/Untitled_design__2_-removebg-preview.png");
+    color: #fff;
+    padding: 10px 76px;
+    position: relative;
+    background-position: center;
+    background-size: 100% 100%;
+    height: 415px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+
+  .ribbon {
+    display: none;
+  }
+
+  .courses {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    margin-top: 110px;
+  }
+
+  .course-heading h1 {
+    font-size: 35px;
+    font-weight: 700;
+    color: #7a7aff;
+    font-variant: small-caps;
+    font-stretch: ultra-expanded;
+  }
+
+  .course-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 81px;
+  }
+
+  .border-radiuse-2 {
+    width: 100%;
+    margin-left: -160px;
+    z-index: -1;
+    display: none;
+  }
+
+  .borders .content-of-description i {
+    font-size: 50px;
+  }
+
+  .content-of-description h1 {
+    font-size: 39px;
+    font-variant: small-caps;
+  }
+
+  .content-of-description p {
+    font-size: 14px;
+  }
+
+  .content-of-description {
+    width: 258px;
+  }
+
+  .description {
+    margin-top: -1268px;
+  }
+
+  .pricings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 302vh;
+    flex-direction: column;
+  }
+
+  .pricings .pricing {
+    background-color: #fafafa;
+    width: 264px;
+    height: 500px;
+    margin-right: 30px;
+    cursor: pointer;
+    border: 1px solid #7a7aff;
+    margin-left: 30px;
+    transition: 0.5s;
+    margin-bottom: 84px;
+  }
+
+  #active {
+    transform: scale(110%);
+    margin-left: 20px;
+    margin-right: 17px;
+  }
+
+  .testimonial-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #6868ff;
+    margin-bottom: 25px;
+    margin-top: 27px;
+  }
+
+  footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #3586ff;
+    height: 50px;
+    padding: 2px 5px;
+    flex-direction: column;
+    margin-top: 100px;
+  }
+
+  footer .social-icons li,
+  footer .menu li {
+    list-style: none;
+    font-size: 12px;
+  }
+
+  .contact-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  .contact {
+    position: relative;
+    min-width: 228px;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact .contactinfo {
+    position: absolute;
+    top: 40px;
+    width: 311px;
+    height: calc(100% - 80px);
+    background-color: #6868ff;
+    z-index: 1;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    left: -59px;
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.138);
+  }
+
+  .contact {
+    position: relative;
+    min-width: 228px;
+    min-height: 627px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-form h2 {
+    color: #000056;
+    font-size: 24px;
+    font-weight: 500;
+    margin-left: -204px;
+    margin-top: -45px;
+  }
+
+  footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #3586ff;
+    min-height: 200px;
+    padding: 20px 50px;
+    flex-direction: column;
+    margin-top: 951px !important;
+  }
+
+  .inputBx input,
+  .inputBx textarea {
+    width: 100%;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    border: none;
+    border-bottom: 1px solid #777;
+    outline: none;
+    margin-left: -180px;
+    resize: none;
+  }
+
+  .inputBx span {
+    position: absolute;
+    left: -220px;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    transition: 0.5s;
+    pointer-events: none;
+    bottom: 10px;
+  }
+
+  .contact-form .formBox,
+  .formBox .inputBx.w50 {
+    width: 71px;
+  }
+
+  .inputBx input,
+  .inputBx textarea {
+    width: 270px;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    border: none;
+    border-bottom: 1px solid #777;
+    outline: none;
+    margin-left: -233px;
+    resize: none;
+    margin-top: 38px;
+  }
+
+  .contact {
+    position: relative;
+    min-width: 228px;
+    min-height: 627px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inputBx input[type="submit"] {
+    border: none;
+    background-color: #6868ff;
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px 0 10px 0;
+    width: 159px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  .inputBx input,
+  .inputBx textarea {
+    width: 270px;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    border: none;
+    border-bottom: 1px solid #777;
+    outline: none;
+    margin-left: -233px;
+    resize: none;
+    margin-top: 38px;
+  }
+
+  .contact-form {
+    left: -187px;
+    position: absolute;
+    padding: 70px 50px;
+    background-color: #fff;
+    width: calc(100% - 150px);
+    margin-left: 150px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.097);
+    padding-left: 250px;
+    height: 799px;
+    top: 626px;
+  }
+
+  .contact .contactinfo {
+    position: absolute;
+    top: 40px;
+    width: 334px;
+    height: calc(100% - 80px);
+    background-color: #6868ff;
+    z-index: 1;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    left: -50px;
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.138);
+  }
+}
+
+
+.nav h1 i {
+  display: none;
+}
+
+.contact-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
 footer {
   position: relative;
@@ -1079,28 +1697,15 @@ footer .wave#wave4 {
 }
 
 
-@media (max-width : 360px) {
-  .nav {
-    width: 360px !important;
-    height: 72px;
-  }
-
-  .nav .logo h1 {
-    font-size: 20px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  .nav .logo h1 i {
-    margin-left: 20px;
-    display: block;
+@media(max-width:920px){
+  .content-of-main .image {
+    width: 100% !important;
+    height: 100vh !important;
   }
 
   .menu {
     position: fixed;
-    background-color: #007bff;
+    background-color: #6868ff;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -1114,7 +1719,16 @@ footer .wave#wave4 {
   }
 
   .menu.open-menu {
-    max-width: 400px;
+    max-width: 220px;
+  }
+
+  .nav-links {
+    margin-top: 40px;
+  }
+
+  .buttons {
+    width: 100%;
+    height: 119px;
   }
 
   .menu ul {
@@ -1122,6 +1736,31 @@ footer .wave#wave4 {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    margin-top: 68px;
+  }
+
+  .buttons a {
+    padding: 8px 25px;
+    border: 0;
+    margin-right: 10px;
+    font-size: 15px;
+    background-color: transparent;
+    font-family: 'Poppins';
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #fff;
+    transition: 0.5s;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 29px;
+  }
+
+  .user img {
+    width: 60px;
+    cursor: pointer;
+    margin-top: -111px;
+    margin-left: 34px;
   }
 
   .menu ul li {
@@ -1129,99 +1768,15 @@ footer .wave#wave4 {
   }
 
 
-  .nav .logo {
+  .nav .logo h1 {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 1000px;
   }
 
-  .image h1 {
-    font-size: 23px;
-    color: #fff;
-    text-align: left;
-    font-weight: 600;
-  }
-
-  .image p {
-    width: 315px;
-    text-align: center;
-    font-size: 14px;
-  }
-
-  .image button {
-    padding: 6px 19px;
-    outline: 0;
-    border: 0;
-    color: #000;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.838);
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 14px;
-  }
-
-  .courses .course-card {
-    width: 306px;
-    height: 278px;
-    margin-right: 20px;
-    text-align: center;
-    background-color: transparent;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.117);
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: -80px;
-    margin-bottom: 108px;
-    transition: transform 0.5s;
-    margin-left: 15px;
-  }
-
-  .testimonials {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 503vh;
-    flex-direction: column;
-  }
-
-  .carousel .teachers-heading {
-    font-size: 40px;
-    color: #6868ff;
-    margin-bottom: -90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    display: none;
-  }
-
-  .testimonials .inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 40px;
-    flex-direction: column;
-  }
-
-  .inner img {
-    width: 302px;
-  }
-
-  .name {
-    font-size: 30px;
-    font-weight: 600;
-  }
-
-  .testimonial p {
-    font-size: 12px;
-    width: 300px;
-  }
-
-  .testimonial {
-    width: 495px;
-    margin-left: 204px;
+  .nav .logo h1 i {
+    display: block;
   }
 
   .courses {
@@ -1229,124 +1784,107 @@ footer .wave#wave4 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 80vh;
+    height: 154vh;
     flex-wrap: wrap;
     margin-bottom: 50px;
-    margin-top: 110px;
   }
 
-  .course-heading h1 {
-    font-size: 35px;
-    font-weight: 700;
-    color: #7a7aff;
-    font-variant: small-caps;
-    font-stretch: ultra-expanded;
-  }
-
-  .course-heading {
+  .ribbon {
+    position: relative;
+    background: #6868ff;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    width: 270px;
+    font-size: 32px;
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    font-weight: 800;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 81px;
+    text-align: center;
+    margin-bottom: -40px;
+    margin-left: 364px;
+    font-family: 'Grandstander', cursive;
   }
 
-  .border-radiuse-2 {
-    width: 100%;
-    margin-left: -160px;
+  .testimonial {
+    width: 529px;
+    margin-left: -208px;
+    background-image: url("./images/Untitled_design__2_-removebg-preview.png");
+    color: #fff;
+    padding: 10px 54px;
+    position: relative;
+    background-position: center;
+    background-size: 100% 100%;
+    height: 582px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .inner img {
+    width: 479px;
+    margin-left: 27px;
+    margin-right: 232px;
+  }
+
+  .gif img {
+    position: absolute;
+    top: 60px;
+    width: 249px;
+    right: 130px;
     z-index: -1;
-    display: none;
   }
 
-  .borders .content-of-description i {
-    font-size: 50px;
+  .content-of-description p {
+    font-size: 18px;
+    margin-left: 50px;
   }
 
   .content-of-description h1 {
     font-size: 39px;
     font-variant: small-caps;
+    margin-left: 50px;
   }
 
-  .content-of-description p {
-    font-size: 14px;
+  .content-of-description h3 {
+    margin-left: 93px;
   }
 
-  .content-of-description {
-    width: 258px;
+  .ribbon {
+    display: none;
   }
 
-  .description {
-    margin-top: -1268px;
+  .contact-form {
+    position: absolute;
+    padding: 70px 50px;
+    background-color: #fff;
+    width: calc(100% - 346px);
+    margin-left: 266px;
+    box-shadow: 0 0px 40px rgba(0, 0, 0, 0.224);
+    padding-left: 250px;
+    height: 100%;
+    border-radius: 30px;
   }
 
-  .pricings {
+  .contact .contactinfo {
+    margin-left: 116px;
+    position: absolute;
+    top: 40px;
+    width: 350px;
+    height: calc(100% - 80px);
+    background-color: #6868ff;
+    z-index: 1;
+    padding: 40px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 302vh;
+    justify-content: space-between;
     flex-direction: column;
-  }
-
-  .pricings .pricing {
-    background-color: #fafafa;
-    width: 264px;
-    height: 500px;
-    margin-right: 30px;
-    cursor: pointer;
-    border: 1px solid #7a7aff;
-    margin-left: 30px;
-    transition: 0.5s;
-    margin-bottom: 84px;
-  }
-
-  #active {
-    transform: scale(110%);
-    margin-left: 20px;
-    margin-right: 17px;
-  }
-
-  .testimonial-heading {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: #6868ff;
-    margin-bottom: 25px;
-    margin-top: 27px;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.24);
+    border-radius: 30px;
   }
-
-  footer {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: #3586ff;
-    height: 50px;
-    padding: 2px 5px;
-    flex-direction: column;
-    margin-top: 100px;
-  }
-
-  footer .social-icons li,
-  footer .menu li {
-    list-style: none;
-    font-size: 12px;
-  }
-
-}
-
-.nav h1 i {
-  display: none;
-}
-
-.contact-section {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  display: none;
 }
